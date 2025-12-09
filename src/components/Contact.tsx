@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -45,6 +45,7 @@ export function Contact() {
   const isInView = useInView(ref, { once: false, margin: "-100px" });
   const { toast } = useToast();
   const [animationKey, setAnimationKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -59,13 +60,49 @@ export function Contact() {
     }
   }, [isInView]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-    });
-    setFormData({ name: "", phone: "", email: "", message: "" });
+    setIsLoading(true);
+
+    try {
+      // Prepare form data for Web3Forms
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", "fbb00df7-41b7-4d6f-9304-3c9de24bb51e");
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("message", formData.message);
+      
+      // Send to Web3Forms API
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Show success message
+        toast({
+          title: "Mensagem enviada com sucesso!",
+          description: "Entraremos em contato em breve.",
+        });
+
+        // Clear form
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        throw new Error(data.message || "Erro ao enviar mensagem");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -153,9 +190,24 @@ export function Contact() {
                   placeholder="Descreva seu projeto ou dúvida..."
                 />
               </div>
-              <Button type="submit" variant="default" size="lg" className="w-full sm:w-auto">
-                <Send className="w-4 h-4 mr-2" />
-                Enviar Mensagem
+              <Button 
+                type="submit" 
+                variant="default" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Enviar Mensagem
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>
