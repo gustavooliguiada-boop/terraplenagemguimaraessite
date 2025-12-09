@@ -1,0 +1,74 @@
+═══════════════════════════════════════════════════════
+LISTA DE NOMES DE ARQUIVOS DAS IMAGENS
+═══════════════════════════════════════════════════════
+
+Use exatamente estes nomes para as imagens!
+
+───────────────────────────────────────────────────────
+CARREGADEIRAS (pasta: carregadeiras/)
+───────────────────────────────────────────────────────
+case-w20e.png
+case-w20g.png
+nw-12d.png
+hyundai-635-al.png
+
+───────────────────────────────────────────────────────
+MOTONIVELADORAS (pasta: motoniveladoras/)
+───────────────────────────────────────────────────────
+new-holland-rg170.png
+case-865b.png
+komatsu-gd655.png
+cat-140.png
+john-deere-620g.png
+
+───────────────────────────────────────────────────────
+TRATORES DE ESTEIRA (pasta: tratores-esteira/)
+───────────────────────────────────────────────────────
+komatsu-d61.png
+cat-d5.png
+cat-d6.png
+john-deere-750j.png
+
+───────────────────────────────────────────────────────
+ROLOS COMPACTADORES (pasta: rolos-compactadores/)
+───────────────────────────────────────────────────────
+dynapac-ca250.png
+dynapac-ca150.png
+xcmg-xs120pd.png
+cat-cs10g.png
+cat-cs533.png
+jcb-vm115.png
+sany-ssrd120-pd.png
+
+───────────────────────────────────────────────────────
+TRATORES AGRÍCOLAS (pasta: tratores-agricolas/)
+───────────────────────────────────────────────────────
+massey-ferguson-4295.png
+massey-ferguson-4310.png
+new-holland-t5100.png
+new-holland-t130.png
+valtra-a144.png
+valtra-bh185i.png
+
+───────────────────────────────────────────────────────
+RETRO-ESCAVADEIRAS (pasta: retro-escavadeiras/)
+───────────────────────────────────────────────────────
+case-retro.png
+jcb-retro.png
+sany-retro.png
+
+───────────────────────────────────────────────────────
+CAMINHÕES (pasta: caminhoes/)
+───────────────────────────────────────────────────────
+caminhao-comboio-5000l.png
+caminhao-prancha.png
+
+═══════════════════════════════════════════════════════
+TOTAL: 31 IMAGENS
+═══════════════════════════════════════════════════════
+
+IMPORTANTE:
+- Use letras MINÚSCULAS
+- Use hífen (-) onde indicado
+- Formato: PNG ou JPG
+- Se usar JPG, altere a extensão (.jpg)
